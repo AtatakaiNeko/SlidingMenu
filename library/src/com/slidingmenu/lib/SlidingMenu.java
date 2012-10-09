@@ -202,9 +202,12 @@ public class SlidingMenu extends RelativeLayout
 		if (selectorRes != -1)
 			setSelectorDrawable(selectorRes);
 
-		int touchModeMarginValue = ta.getInt(R.styleable.SlidingMenu_touchMarginValue, 20);
-		setTouchMarginValueAbove(touchModeMarginValue);
-		setTouchMarginValueBehind(touchModeMarginValue);
+		// Set touch margins value for both views. It'll not take effect if TouchMode were set to
+		// TOUCHMODE_FULLSCREEN
+		int touchMarginValueAbove = ta.getInt(R.styleable.SlidingMenu_touchMarginValueAbove, 20);
+		setTouchMarginValueAbove(touchMarginValueAbove);
+		int touchMarginValueBehind = ta.getInt(R.styleable.SlidingMenu_touchMarginValueBehind, 20);
+		setTouchMarginValueBehind(touchMarginValueBehind);
 		// Do not forget to recycle array
 		ta.recycle();
 	}
