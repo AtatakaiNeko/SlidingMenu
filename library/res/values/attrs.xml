@@ -30,6 +30,8 @@
             <enum name="margin" value="0" />
             <enum name="fullscreen" value="1" />
         </attr>
+        
+        <attr name="touchMarginValue" format="integer" />
         <attr name="shadowDrawable" format="reference" />
         <attr name="shadowWidth" format="dimension" />
         <attr name="behindFadeEnabled" format="boolean" />
