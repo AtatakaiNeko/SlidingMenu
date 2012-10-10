@@ -839,11 +839,15 @@ public class CustomViewAbove extends ViewGroup
 			final int activePointerId = mActivePointerId;
 			if (activePointerId == INVALID_POINTER)
 				break;
-			int pointers = ev.getPointerCount();
-			int pointerID = ev.getPointerId(pointers - 1);
-			Log.d("PointerBloody", "Event: " + pointers + " additIn:" + pointerID + " mActive "
-					+ activePointerId);
 			final int pointerIndex = MotionEventCompat.findPointerIndex(ev, activePointerId);
+			if (pointerIndex == -1)
+			{
+				// Temporary fix for IndexOutOfBoundException
+				// TODO: Review code related to TouchEvents and get rid of saving mActivePointerID
+				mIsBeingDragged = false;
+				break;
+			}
+
 			final float x = MotionEventCompat.getX(ev, pointerIndex);
 			final float dx = x - mLastMotionX;
 			final float xDiff = Math.abs(dx);
